@@ -12,22 +12,39 @@ namespace CompanyEmployees.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private ILoggerManager _logger;
+        private readonly IRepositoryManager _repository;
 
-        public WeatherForecastController(ILoggerManager logger)
+        public WeatherForecastController(IRepositoryManager repository)
         {
-            _logger = logger;
+            _repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<string>> Get()
         {
-            _logger.LogInfo("Info message from our controller");
-            _logger.LogDebug("Debug message from our controller");
-            _logger.LogWarn("Warn message from our controller");
-            _logger.LogError("Error message from our controller");
+            //_repository.Company.AnyMethodFromCompanyRepository();
+            //_repository.Employee.AnyMethodFromEmployeeRepository();
 
-            return new string[] { "Value 1", "Value 2" };
+            return new string[] { "value1", "value2" };
         }
+        //{
+        //    private ILoggerManager _repository;
+
+        //    public WeatherForecastController(IRepositoryManager Repository)
+        //    {
+        //        _repository = Repository;
+        //    }
+
+        //    [HttpGet]
+        //    public IEnumerable<string> Get()
+        //    {
+        //        //_logger.LogInfo("Info message from our controller");
+        //        //_logger.LogDebug("Debug message from our controller");
+        //        //_logger.LogWarn("Warn message from our controller");
+        //        //_logger.LogError("Error message from our controller");
+
+        //        //return new string[] { "Value 1", "Value 2" };
+        //    }
+        //}
     }
 }
